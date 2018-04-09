@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CRUDCad
 {
-    public partial class Form1 : Form
+    public partial class PESQUISAR : Form
     {
-        public Form1()
+        public PESQUISAR()
         {
             InitializeComponent();
         }
