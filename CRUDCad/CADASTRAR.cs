@@ -35,24 +35,50 @@ namespace CRUDCad
 
         private void buttonCADASTRAR_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlCon= new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=CRUD;Data Source=DESKTOP-2OJO8IK");
+            SqlConnection sqlCon = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=CRUD;Data Source=DESKTOP-2OJO8IK");
             SqlCommand command = new SqlCommand("insert into Alunos(IDaluno, Nome, Turma) values (@IDaluno, @Nome, @Turma)", sqlCon);
             command.Parameters.Add("@IDaluno", SqlDbType.Int).Value = txtRA.Text;
             command.Parameters.Add("@Nome", SqlDbType.VarChar).Value = txtNOME.Text;
             command.Parameters.Add("@Turma", SqlDbType.VarChar).Value = txtTURMA.Text;
 
-            try{
+            try
+            {
                 sqlCon.Open();
                 command.ExecuteNonQuery();
                 MessageBox.Show("Cadastro Efetuado Com Sucesso!");
 
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show("ERRO AO EFETUAR CADASTRO" + ex.Message);
             }
-            finally{
+            finally
+            {
                 sqlCon.Close();
             }
+        }
+
+        private void pESQUISARToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PESQUISAR p1 = new PESQUISAR();
+            p1.Show();
+        }
+
+        private void sAIRToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form.ActiveForm.Close();
+        }
+
+        private void aTUALIZARToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ATUALIZAR a1 = new ATUALIZAR();
+            a1.Show();
+        }
+
+        private void eXCLUIRToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EXCLUIR e1 = new EXCLUIR();
+            e1.Show();
         }
     }
 }
